@@ -5,7 +5,7 @@ export default function HomeLayout({
     const nav_bar = "p-4 border border-black hover:border-white"
     return(
         <main className="flex flex-col min-h-screen bg-white">
-            <div className="flex flex-row font-ttf text-black bg-gray-700">
+            <div className="flex flex-row text-black bg-gray-700">
                 <div className={nav_bar}>
                 <Link href="/home">
                     Home 
