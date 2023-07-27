@@ -19,7 +19,7 @@ export default function HomeLayout({
                 <li className={nav_bar}>
                     <Link href="/home/leaderboard">Leaderboard</Link>
                 </li>
-                <li className="absolute right-4">
+                <li className="ml-auto mr-4">
                     <Image src="/csgo.png" alt="CSGO Logo" width={60} height={60}/>
                 </li>
             </menu>
