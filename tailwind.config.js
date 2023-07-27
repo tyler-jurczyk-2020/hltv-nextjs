@@ -7,7 +7,8 @@ module.exports = {
   ],
 theme: {
     fontFamily: { 
-        ibm : ['"IBM Plex Sans"'] 
+        ibm : ['"IBM Plex Sans"'], 
+        poppins: ['Poppins'],
     },
     extend: {
         backgroundImage: {
