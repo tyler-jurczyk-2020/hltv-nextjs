@@ -6,11 +6,22 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
 theme: {
-    fontFamily: { 
-        ibm : ['"IBM Plex Sans"'], 
-        poppins: ['Poppins'],
-    },
     extend: {
+        fontFamily: { 
+            ibm : ['"IBM Plex Sans"'], 
+            poppins: ['Poppins'],
+        },
+        height: {
+            'nav-b': '58px',
+            'page': 'calc(100% - 128px)'
+        },
+        margin: {
+            'nav-b': '58px',
+        },
+        padding: {
+            'nav-b': '58px',
+            'nav-e': '16px',
+        },
         backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
