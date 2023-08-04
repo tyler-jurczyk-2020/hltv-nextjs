@@ -13,7 +13,6 @@ theme: {
         },
         height: {
             'nav-b': '58px',
-            'page': 'calc(100% - 128px)'
         },
         margin: {
             'nav-b': '58px',
