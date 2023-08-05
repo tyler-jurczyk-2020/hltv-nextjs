@@ -4,11 +4,23 @@ import SlidingTxt from "./SlidingTxt";
 import TypingTxt from "./TypingTxt";
 
 export default async function Home() {
+    // classNames
     const nav_bar = "p-nav-e border border-transparent hover:border-white"
-
-    const resumeReq = await fetch("http://localhost:3000/home/api", {cache: 'no-store'})
+    // Get JSON Data
+    const resumeReq = await fetch("http://localhost:3000/home/api", {cache: 'no-store'});
     const resume = await resumeReq.json();
-
+    // Functions
+    function getSources () {
+        let list = '';
+        console.log(resume.courses)
+        for(const key in resume.courses) {
+            if(key == resume.courses.length - 1){
+                list += resume.courses[key]
+                return list
+            }
+            list += resume.courses[key] + ' ● '; 
+        }
+    }
     return (
         <main>
             <menu className="fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
@@ -35,8 +47,9 @@ export default async function Home() {
                 </div>
                 <SlidingTxt className='col-span-3 text-2xl text-center self-center' text='"I am a Computer Engineer from the University of Illinois Urbana-Champaign, and I am in the business of building products oriented towards the future. This website that are you are currently looking at was built using the frameworks/language highlighted above. Scroll furthur to see to learn a little more about me.'/>
             </div>
-            <div className="h-screen" id="portfolio">
-            {resume.Name}
+            <div className="h-screen -mt-nav-b pt-nav-b" id="portfolio">
+                <SlidingTxt className="text-5xl border w-min" text="Courses"/>
+                <p className="text-center text-xl">{getSources()}</p>
             </div>
         </main>
 )}

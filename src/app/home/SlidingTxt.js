@@ -28,6 +28,6 @@ export default function SlidingTxt({ text , className}) {
     }, [viewportRef])
     return (
         <div className={className} ref={viewportRef}>
-            <p className={visible ? "duration-1000" : "translate-y-[45rem] duration-1000"}>{text}</p>    
+            <p className={visible ? "duration-1000" : "translate-x-[45rem] duration-1000"}>{text}</p>    
         </div>
 )} 
