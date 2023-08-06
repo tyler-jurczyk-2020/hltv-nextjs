@@ -13,10 +13,6 @@ export default function RotatingTxt({ text , className}) {
         if(hit_box.isIntersecting && (hit_box.isIntersecting - previous_r) > 0) {
             let angle, slide;
             if(previous_t > 0){ 
-                console.log(`Hitbox Ratio: ${hit_box.intersectionRatio}`);
-                //console.log(`Previous Ratio: ${previous}`);
-                //console.log(`Hitbox Rect: ${previous_p}`)
-                //console.log(`Difference: ${hit_box.intersectionRatio - previous_r}`);
                 angle = Math.round(hit_box.intersectionRatio*100*0.9 - 90);
                 slide = Math.round(hit_box.intersectionRatio*150 - 150); 
                 if(rotatingTxt.current) {
@@ -27,6 +23,8 @@ export default function RotatingTxt({ text , className}) {
             }
             else if(previous_b < 0) {
                 angle = Math.round(-1*hit_box.intersectionRatio*100*0.9);
+                if(angle < 0) // Corrects for minor slant sometimes when scrolling up
+                    angle = 0;
                 slide = Math.round(-1*hit_box.intersectionRatio*150); 
             }
             if(rotatingTxt.current) {
