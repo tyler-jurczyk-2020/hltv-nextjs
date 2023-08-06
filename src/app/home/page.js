@@ -23,7 +23,7 @@ export default async function Home() {
     }
     return (
         <main>
-            <menu className="fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
+            <menu className="z-10 fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
                 <Link className={nav_bar} href="#home">Home</Link>
                 <Link className={nav_bar} href="#about">About</Link>
                 <Link className={nav_bar} href={"#portfolio"}>Portfolio</Link>
@@ -47,8 +47,8 @@ export default async function Home() {
                 </div>
                 <SlidingTxt className='col-span-3 text-2xl text-center self-center' text='"I am a Computer Engineer from the University of Illinois Urbana-Champaign, and I am in the business of building products oriented towards the future. This website that are you are currently looking at was built using the frameworks/language highlighted above. Scroll furthur to see to learn a little more about me.'/>
             </div>
-            <div className="h-screen -mt-nav-b pt-nav-b" id="portfolio">
-                <RotatingTxt className="text-5xl border w-min" text="Courses"/>
+            <div className="h-[300vh] -mt-nav-b pt-nav-b" id="portfolio">
+                <RotatingTxt className="z-0 text-5xl border w-min" text="Courses"/>
                 <p className="text-center text-xl">{getSources()}</p>
             </div>
         </main>

@@ -3,41 +3,62 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function RotatingTxt({ text , className}) {
-    // Create ref to later be connected to text
     const rotatingTxt = useRef(null);
     const hitBox = useRef(null);
-    // Callback when intersection condition met
-    const callback = (entries, observer) => {
+    let previous_r = 0;
+    let previous_t = 0;
+    let previous_b = 0;
+    const callback = (entries) => {
         const [ hit_box ] = entries;
-        if(hit_box.isIntersecting){
-            const angle = Math.round(hit_box.intersectionRatio*100*0.9 - 90);
-            const slide = angle 
-            if(rotatingTxt.current)
-                rotatingTxt.current.style.transform = `rotate(${angle}deg)`;
-                rotatingTxt.current.style.position = 'relative'
-                rotatingTxt.current.style.left = `${angle}px`
-        }
+        if(hit_box.isIntersecting && (hit_box.isIntersecting - previous_r) > 0) {
+            let angle, slide;
+            if(previous_t > 0){ 
+                console.log(`Hitbox Ratio: ${hit_box.intersectionRatio}`);
+                //console.log(`Previous Ratio: ${previous}`);
+                //console.log(`Hitbox Rect: ${previous_p}`)
+                //console.log(`Difference: ${hit_box.intersectionRatio - previous_r}`);
+                angle = Math.round(hit_box.intersectionRatio*100*0.9 - 90);
+                slide = Math.round(hit_box.intersectionRatio*150 - 150); 
+                if(rotatingTxt.current) {
+                    rotatingTxt.current.style.position = 'sticky';
+                    rotatingTxt.current.style.marginLeft = `${slide}px`;
+                    rotatingTxt.current.style.transform = `rotate(${angle}deg)`;
+                }
+            }
+            else if(previous_b < 0) {
+                angle = Math.round(-1*hit_box.intersectionRatio*100*0.9);
+                slide = Math.round(-1*hit_box.intersectionRatio*150); 
+            }
+            if(rotatingTxt.current) {
+                    rotatingTxt.current.style.position = 'sticky';
+                    rotatingTxt.current.style.marginLeft = `${slide}px`;
+                    rotatingTxt.current.style.transform = `rotate(${angle}deg)`;
+            }
+        } 
+        previous_r = hit_box.intersectionRatio;
+        previous_t = hit_box.boundingClientRect.top;
+        previous_b = hit_box.boundingClientRect.bottom;
     }
+    // Apply useCallback to the following function for better perf?
     function thresholdGen(numSteps) {
         let arr = [];
         for(let i = 0; i <= numSteps; i++){
             arr.push(i/numSteps);
         }
-        console.log(arr)
         return arr;
     }
     useEffect(() => {
-        const observer = new IntersectionObserver( callback, { root: null, threshold : thresholdGen(20) })
+        const observer = new IntersectionObserver( callback, { root: null, threshold : thresholdGen(50) })
         if(hitBox.current)
             observer.observe(hitBox.current)
         return () => {
         if(hitBox.current)
             observer.unobserve(hitBox.current)
         }
-    }, [rotatingTxt, hitBox])
+    }, [hitBox])
     return (
-        <div>
-            <p className={className} ref={rotatingTxt}>{text}</p>    
-            <div className="border w-16 h-1/3 absolute" ref={hitBox}></div>
+        <div className="">
+            <p className={"sticky top-[58px] text-5xl w-min border -ml-[150px] -rotate-90"} ref={rotatingTxt}>{text}</p>    
+            <div className="border w-16 h-[80vh]" ref={hitBox}></div>
         </div>
 )}
