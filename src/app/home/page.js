@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SlidingTxt from "./SlidingTxt";
 import TypingTxt from "./TypingTxt";
+import RotatingTxt from "./RotatingTxt";
 
 export default async function Home() {
     // classNames
@@ -12,7 +13,6 @@ export default async function Home() {
     // Functions
     function getSources () {
         let list = '';
-        console.log(resume.courses)
         for(const key in resume.courses) {
             if(key == resume.courses.length - 1){
                 list += resume.courses[key]
@@ -48,7 +48,7 @@ export default async function Home() {
                 <SlidingTxt className='col-span-3 text-2xl text-center self-center' text='"I am a Computer Engineer from the University of Illinois Urbana-Champaign, and I am in the business of building products oriented towards the future. This website that are you are currently looking at was built using the frameworks/language highlighted above. Scroll furthur to see to learn a little more about me.'/>
             </div>
             <div className="h-screen -mt-nav-b pt-nav-b" id="portfolio">
-                <SlidingTxt className="text-5xl border w-min" text="Courses"/>
+                <RotatingTxt className="text-5xl border w-min" text="Courses"/>
                 <p className="text-center text-xl">{getSources()}</p>
             </div>
         </main>
