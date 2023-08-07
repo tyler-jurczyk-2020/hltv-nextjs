@@ -29,6 +29,7 @@ export default function RotatingTxt({ text , className}) {
                 slide = Math.round(-1*hit_box.intersectionRatio*150); 
             }
             if(rotatingTxt.current) {
+                    rotatingTxt.current.style.transition = '50ms'
                     rotatingTxt.current.style.position = 'sticky';
                     rotatingTxt.current.style.marginLeft = `${slide}px`;
                     rotatingTxt.current.style.transform = `rotate(${angle}deg)`;
@@ -70,6 +71,7 @@ export default function RotatingTxt({ text , className}) {
                 ang = Math.round(-1*ratio*100*0.9);
                 sl = Math.round(-1*ratio*150); 
             }
+            rotatingTxt.current.style.transition = '600ms'
             rotatingTxt.current.style.marginLeft = `${sl}px`;
             rotatingTxt.current.style.transform = `rotate(${ang}deg)`;
         }
@@ -85,8 +87,8 @@ export default function RotatingTxt({ text , className}) {
     }, [hitBox])
     return (
         <div className="">
-            <p className={"sticky top-[58px] text-5xl w-min border -ml-[150px] -rotate-90"} ref={rotatingTxt}>{text}</p>    
-            <p className="sticky" ref={someText}>some text</p>
+            <p className={"z-10 sticky top-[58px] text-5xl w-min border bg-neutral-900 -ml-[150px] -rotate-90"} ref={rotatingTxt}>{text}</p>    
+            <p className="z-0 sticky p-4" ref={someText}>some text</p>
             <div className="border w-16 h-[80vh]" ref={hitBox}></div>
         </div>
 )}

@@ -23,7 +23,7 @@ export default async function Home() {
     }
     return (
         <main>
-            <menu className="z-10 fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
+            <menu className="z-50 fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
                 <Link className={nav_bar} href="#home">Home</Link>
                 <Link className={nav_bar} href="#about">About</Link>
                 <Link className={nav_bar} href={"#portfolio"}>Portfolio</Link>
