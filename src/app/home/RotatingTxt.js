@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 export default function RotatingTxt({ text , className}) {
     const rotatingTxt = useRef(null);
     const hitBox = useRef(null);
+    const someText = useRef(null);
     let previous_r = 0;
     let previous_t = 0;
     let previous_b = 0;
@@ -45,6 +46,34 @@ export default function RotatingTxt({ text , className}) {
         }
         return arr;
     }
+    // Dynamically place other elements upon page load
+    useEffect(() => {
+        if(rotatingTxt.current && someText.current) {
+            someText.current.style.position = 'sticky'
+            someText.current.style.top = `${58 + rotatingTxt.current.offsetHeight}px`
+        }
+    }, [rotatingTxt, someText])
+    // Initial placement of RotatingTxt so that it's consistent with page position
+    useEffect(() => {
+        if(hitBox.current && rotatingTxt.current) {
+            const bounding = hitBox.current.getBoundingClientRect();
+            const boxTop = (bounding.top - 58);
+            const ratio = (bounding.bottom - window.innerHeight)/bounding.height;
+            console.log(ratio);
+            let sl; 
+            let ang;
+            if (boxTop < 0 || bounding.bottom < window.innerHeight ) {
+                ang = 0;
+                sl = 0;
+            }
+            else {
+                ang = Math.round(-1*ratio*100*0.9);
+                sl = Math.round(-1*ratio*150); 
+            }
+            rotatingTxt.current.style.marginLeft = `${sl}px`;
+            rotatingTxt.current.style.transform = `rotate(${ang}deg)`;
+        }
+    },[rotatingTxt, hitBox])
     useEffect(() => {
         const observer = new IntersectionObserver( callback, { root: null, threshold : thresholdGen(50) })
         if(hitBox.current)
@@ -57,6 +86,7 @@ export default function RotatingTxt({ text , className}) {
     return (
         <div className="">
             <p className={"sticky top-[58px] text-5xl w-min border -ml-[150px] -rotate-90"} ref={rotatingTxt}>{text}</p>    
+            <p className="sticky" ref={someText}>some text</p>
             <div className="border w-16 h-[80vh]" ref={hitBox}></div>
         </div>
 )}
