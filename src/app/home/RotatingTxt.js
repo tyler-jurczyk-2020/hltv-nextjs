@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function RotatingTxt({ text , className}) {
+export default function RotatingTxt({ className, text, content, contentStyle }) {
     const rotatingTxt = useRef(null);
     const hitBox = useRef(null);
     const someText = useRef(null);
@@ -89,6 +89,7 @@ export default function RotatingTxt({ text , className}) {
         <div className="">
             <p className={"z-10 sticky top-[58px] text-5xl w-min border bg-neutral-900 -ml-[150px] -rotate-90"} ref={rotatingTxt}>{text}</p>    
             <p className="z-0 sticky p-4" ref={someText}>some text</p>
+            {content.map((item, index) => <p className={contentStyle} key={index}>{item}</p>)}
             <div className="border w-16 h-[80vh]" ref={hitBox}></div>
         </div>
 )}
