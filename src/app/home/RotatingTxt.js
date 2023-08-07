@@ -9,13 +9,14 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
     let previous_r = 0;
     let previous_t = 0;
     let previous_b = 0;
+    const offset = window.innerWidth + 100;
     const callback = (entries) => {
         const [ hit_box ] = entries;
         if(hit_box.isIntersecting && (hit_box.isIntersecting - previous_r) > 0) {
             let angle, slide;
             if(previous_t > 0){ 
                 angle = Math.round(hit_box.intersectionRatio*100*0.9 - 90);
-                slide = Math.round(hit_box.intersectionRatio*150 - 150); 
+                slide = Math.round(hit_box.intersectionRatio*offset - offset); 
                 if(rotatingTxt.current) {
                     rotatingTxt.current.style.position = 'sticky';
                     rotatingTxt.current.style.marginLeft = `${slide}px`;
@@ -60,7 +61,6 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
             const bounding = hitBox.current.getBoundingClientRect();
             const boxTop = (bounding.top - 58);
             const ratio = (bounding.bottom - window.innerHeight)/bounding.height;
-            console.log(ratio);
             let sl; 
             let ang;
             if (boxTop < 0 || bounding.bottom < window.innerHeight ) {
@@ -69,9 +69,9 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
             }
             else {
                 ang = Math.round(-1*ratio*100*0.9);
-                sl = Math.round(-1*ratio*150); 
+                sl = Math.round(-1*ratio*offset); 
             }
-            rotatingTxt.current.style.transition = '600ms'
+            rotatingTxt.current.style.transition = '600ms';
             rotatingTxt.current.style.marginLeft = `${sl}px`;
             rotatingTxt.current.style.transform = `rotate(${ang}deg)`;
         }
@@ -86,8 +86,8 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
         }
     }, [hitBox])
     return (
-        <div className="">
-            <p className={"z-10 sticky top-[58px] text-5xl w-min border bg-neutral-900 -ml-[150px] -rotate-90"} ref={rotatingTxt}>{text}</p>    
+        <div className="grid">
+            <p className={"justify-self-center z-10 sticky top-[58px] text-5xl w-min border bg-neutral-900 -rotate-90"} ref={rotatingTxt}>{text}</p>    
             <p className="z-0 sticky p-4" ref={someText}>some text</p>
             {content.map((item, index) => <p className={contentStyle} key={index}>{item}</p>)}
             <div className="border w-16 h-[80vh]" ref={hitBox}></div>
