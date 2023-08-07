@@ -9,7 +9,9 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
     let previous_r = 0;
     let previous_t = 0;
     let previous_b = 0;
-    const offset = window.innerWidth + 100;
+    let offset;
+    if(typeof window !== 'undefined')
+        offset = window.innerWidth + 100;
     const callback = (entries) => {
         const [ hit_box ] = entries;
         if(hit_box.isIntersecting && (hit_box.isIntersecting - previous_r) > 0) {
@@ -87,7 +89,7 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
     }, [hitBox])
     return (
         <div className="grid">
-            <p className={"justify-self-center z-10 sticky top-[58px] text-5xl w-min border bg-neutral-900 -rotate-90"} ref={rotatingTxt}>{text}</p>    
+            <p className={"justify-self-center z-10 sticky top-[58px] text-5xl w-min border bg-neutral-900 -rotate-90 -ml-[110vw]"} ref={rotatingTxt}>{text}</p>    
             <p className="z-0 sticky p-4" ref={someText}>some text</p>
             {content.map((item, index) => <p className={contentStyle} key={index}>{item}</p>)}
             <div className="border w-16 h-[80vh]" ref={hitBox}></div>
