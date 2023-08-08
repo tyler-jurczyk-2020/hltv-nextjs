@@ -3,6 +3,7 @@ import Image from "next/image";
 import SlidingTxt from "./SlidingTxt";
 import TypingTxt from "./TypingTxt";
 import RotatingTxt from "./RotatingTxt";
+import DynamicBg from "./DynamicBg";
 
 export default async function Home() {
     // classNames
@@ -48,8 +49,9 @@ export default async function Home() {
                 <SlidingTxt className='col-span-3 text-2xl text-center self-center' text='"I am a Computer Engineer from the University of Illinois Urbana-Champaign, and I am in the business of building products oriented towards the future. This website that are you are currently looking at was built using the frameworks/language highlighted above. Scroll furthur to see to learn a little more about me.'/>
             </div>
             <div className="h-[300vh] -mt-nav-b pt-nav-b" id="portfolio">
-                <RotatingTxt className="z-0 text-5xl border w-min" text="Courses" content={["test1","test2", "test3"]} contentStyle="p-2 sticky top-[100px]" />
+    {/*<RotatingTxt className="z-0 text-5xl border w-min" text="Courses" content={["test1","test2", "test3"]} contentStyle="p-2 sticky top-[100px]" />*/}
                 <p className="text-center text-xl">{getSources()}</p>
+                <DynamicBg text="Some friggin text"/>
             </div>
         </main>
 )}

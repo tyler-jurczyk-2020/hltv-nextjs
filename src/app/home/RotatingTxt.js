@@ -14,7 +14,7 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
         offset = window.innerWidth + 100;
     const callback = (entries) => {
         const [ hit_box ] = entries;
-        if(hit_box.isIntersecting && (hit_box.isIntersecting - previous_r) > 0) {
+        if(hit_box.isIntersecting) {
             let angle, slide;
             if(previous_t > 0){ 
                 angle = Math.round(hit_box.intersectionRatio*100*0.9 - 90);
