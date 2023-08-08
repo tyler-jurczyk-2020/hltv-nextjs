@@ -14,7 +14,7 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
         offset = window.innerWidth + 100;
     const callback = (entries) => {
         const [ hit_box ] = entries;
-        if(hit_box.isIntersecting) {
+        if(hit_box.isIntersecting && (1 - previous_r) > 0 ) { // Right term prevents slideback?
             let angle, slide;
             if(previous_t > 0){ 
                 angle = Math.round(hit_box.intersectionRatio*100*0.9 - 90);
@@ -27,8 +27,6 @@ export default function RotatingTxt({ className, text, content, contentStyle }) 
             }
             else if(previous_b < 0) {
                 angle = Math.round(-1*hit_box.intersectionRatio*100*0.9);
-                if(angle < 0) // Corrects for minor slant sometimes when scrolling up
-                    angle = 0;
                 slide = Math.round(-1*hit_box.intersectionRatio*150); 
             }
             if(rotatingTxt.current) {
