@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-export default function TypingTxt({ text, className, delay, spacing}) {
+export default function TypingTxt({ text, className, delay, spacing, style}) {
     const [{content, carriage}, setContent] = useState({content:'',carriage:0}) 
     const [pause, setPause] = useState(delay)
     useEffect(() => {
@@ -17,5 +17,5 @@ export default function TypingTxt({ text, className, delay, spacing}) {
         }, pause)
     }, [content])
 
-    return (<p className={className}>{content}</p>
+    return (<p className={className} style={style}>{content}</p>
 )}
