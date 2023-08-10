@@ -20,10 +20,8 @@ export default async function Home() {
             <div className="h-screen overflow-y-auto overflow-x-hidden" style={{perspective: '1px'}}>
                 <div className="flex flex-col bg-[url('../../public/me_crop.jpg')] h-[140vh] bg-cover bg-no-repeat bg-center bg-fixed place-content-center text-center" style={{transform: 'translateZ(-1px) scale(2)'}}>
                 </div>
-
-                    <TypingTxt className="text-6xl font-semibold absolute top-[50vh] w-screen text-center border" style={{transform: 'translateZ(0)'}} text='Tyler Jurczyk' delay={0} spacing={200}/>
-
-                    <TypingTxt className="text-3xl absolute top-[60vh] w-screen text-center border" style={{transform: 'translateZ(0)'}} text="Building What's Next" delay={2500} spacing={200}/>
+                <TypingTxt className="text-6xl font-semibold absolute top-[50vh] w-screen text-center border" style={{transform: 'translateZ(0)'}} text='Tyler Jurczyk' delay={0} spacing={200}/>
+                <TypingTxt className="text-3xl absolute top-[60vh] w-screen text-center border" style={{transform: 'translateZ(0)'}} text="Building What's Next" delay={2500} spacing={200}/>
             </div>
             <div className="min-h-screen grid grid-cols-3 w-5/6 mx-auto -mt-nav-b pt-nav-b" id="about">
                 <h2 className="text-center italic text-3xl self-center col-span-3 -my-5">"I am a software engineer creating the future of today"</h2>
