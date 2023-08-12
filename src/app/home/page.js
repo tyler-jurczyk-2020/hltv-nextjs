@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SlidingTxt from "./SlidingTxt";
 import TypingTxt from "./TypingTxt";
+import Popout from "./Popout";
 
 export default async function Home() {
     // classNames
@@ -14,7 +15,7 @@ export default async function Home() {
         <menu className="z-50 fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
             <Link className={nav_bar} href="#home">Home</Link>
             <Link className={nav_bar} href="#about">About</Link>
-            <Link className={nav_bar} href={"#portfolio"}>Portfolio</Link>
+            <Popout main={'#portfolio'} className={nav_bar} text="Portfolio"/>
             <Link className={nav_bar} href="#contact">Contact</Link>
         </menu>
         <div className="grid place-content-center scroll-smooth h-screen overflow-y-auto overflow-x-hidden" style={{perspective: '1px'}}>
