@@ -30,7 +30,7 @@ export default async function Home() {
             <TypingTxt className="text-6xl font-semibold w-screen text-center" style={{transform: 'translateZ(0)'}} text='Tyler Jurczyk' delay={0} spacing={200}/>
             <TypingTxt className="text-3xl w-screen text-center" style={{transform: 'translateZ(0)'}} text="Building What's Next" delay={2500} spacing={200}/>
             <div className="absolute top-[150vh] bg-neutral-900">
-                <div className="min-h-screen grid grid-cols-3 w-5/6 mx-auto -mt-nav-b pt-nav-b" id="about">
+                <div className="mb-28 h-screen grid grid-cols-3 w-5/6 mx-auto -mt-nav-b pt-nav-b" id="about">
                     <h2 className="text-center italic text-3xl self-center col-span-3 -my-5">"I am a software engineer creating the future of today"</h2>
                     <div className="grid grid-cols-3 col-span-3">
                         <div className="grid grid-cols-2 col-span-2 row-span-2 border border-blue-500 rounded  place-items-center">
@@ -52,10 +52,20 @@ export default async function Home() {
                 <div id='projects' className="min-h-screen">
                 {/* Placeholder for projects*/}     
                 </div>
-                <div className="grid content-center h-[calc(100vh-58px)]">
-                    <FadeTxt className="text-5xl text-center p-12" text="Contact Info" duration="duration-[4s]"/>
-                    <FadeTxt className="text-4xl text-center p-12" text="Email: tylerjurczyk2020@gmail.com" duration="duration-[4s]"/>
-                    <FadeTxt className="text-4xl text-center p-12" text="Phone: (847)-894-5739" duration="duration-[4s]"/>
+                <div className="relative h-[calc(100vh-58px)]">
+                    <FadeTxt className="text-5xl text-center p-12" text="Contact Info & Social" duration="duration-[3s]"/>
+                    <div className="absolute top-0 bottom-0 right-0 left-0 flex flex-col justify-center -translate-y-[58px]">
+                        <FadeTxt type="a" className="text-4xl m-12 w-min whitespace-nowrap self-center underline" color="text-blue-300" href="https://github.com/tyler-jurczyk-2020/" target="_blank" text="GitHub Profile" duration="duration-[3s]"/>
+                        <FadeTxt type="a" className="text-4xl m-12 w-min whitespace-nowrap self-center underline" color="text-blue-300" href="https://www.linkedin.com/in/tylerjurczyk/" target="_blank" text="LinkedIn Profile" duration="duration-[3s]"/>
+                        <div className="flex flex-row ml-auto mr-auto">
+                            <FadeTxt type="p" className="text-4xl text-center py-12 whitespace-pre" text="Email: " color="text-white" duration="duration-[3s]"/>
+                            <FadeTxt href="mailto:tylerjurczyk2020@gmail.com" type="a" className="text-4xl text-center py-12 underline" text="tylerjurczyk2020@gmail.com" color="text-blue-300" duration="duration-[3s]"/>
+                        </div>
+                        <div className="flex flex-row ml-auto mr-auto">
+                            <FadeTxt type="p" className="text-4xl text-center py-12 whitespace-pre" text="Phone: " color="text-white" duration="duration-[3s]"/>
+                            <FadeTxt href="tel:8478945739" type="a" className="text-4xl text-center py-12 underline" text="(847)-894-5739" color="text-blue-300" duration="duration-[3s]"/>
+                        </div>
+                    </div>
                 </div> 
             </div>
         </div>
