@@ -3,12 +3,13 @@ import Image from "next/image";
 import SlidingTxt from "./SlidingTxt";
 import TypingTxt from "./TypingTxt";
 import Popout from "./Popout";
+import FadeTxt from "./FadeTxt";
 
 export default async function Home() {
     // classNames
     const nav_bar = "p-nav-e border border-transparent hover:border-white"
     const menu_items = [
-        ["Recent Courses", "#courses"],
+        ["Recent Courses", "#portfolio"],
         ["Projects", "#projects"]
     ];
     // Get JSON Data
@@ -48,6 +49,14 @@ export default async function Home() {
                     <SlidingTxt className="text-5xl text-center p-12 pb-8" text="Recent Courses" direction="translate-x-[100vw]" duration="duration-1000"/>
                     {resume.courses.map((item, index) => (<SlidingTxt className="text-2xl p-8 text-center" text={item} direction="-translate-x-[100vw]" duration="duration-1000"/>))} 
                 </div>
+                <div id='projects' className="min-h-screen">
+                {/* Placeholder for projects*/}     
+                </div>
+                <div className="grid content-center h-[calc(100vh-58px)]">
+                    <FadeTxt className="text-5xl text-center p-12" text="Contact Info" duration="duration-[4s]"/>
+                    <FadeTxt className="text-4xl text-center p-12" text="Email: tylerjurczyk2020@gmail.com" duration="duration-[4s]"/>
+                    <FadeTxt className="text-4xl text-center p-12" text="Phone: (847)-894-5739" duration="duration-[4s]"/>
+                </div> 
             </div>
         </div>
     </main>
