@@ -1,3 +1,20 @@
 {
-    "courses": ["Intro to Algorithms & Models of Computation", "Computer Systems & Programming", "Digital Systems Laboratory", "Analog Signal Processing", "Fields and Waves I", "Probability with Engineering Applications", "Data Structures"] 
+    "courses": ["Intro to Algorithms & Models of Computation", "Computer Systems & Programming", "Digital Systems Laboratory", "Analog Signal Processing", "Fields and Waves I", "Probability with Engineering Applications", "Data Structures"], 
+    "projects": [
+        {
+        "name": "Personal Webapp",
+        "description": "As seen above, this website is my personal webapp that I built using NextJS full-stack with ReactJS as the front end in combination with TailwindCSS utility classes. This website also feature api endpoints to allow for freqently changing information to be updated on the backend.",
+        "date": "July 2023 to Present"
+        },
+        {
+        "name": "Tetris on FPGA",
+        "description": "Implemented tetris on a MAX10 FPGA using SystemVerilog. I personally handled the storing of information related to the game, in particular, onto SDRAM which require special consideration in order for the SDRAM controller to function properly",
+        "date": "April 2023 to May 2023"
+        },
+        {
+        "name": "Ultrasonic Robotics Car",
+        "description": "Designed and built a robust ultrasonic robotics car that used an ultrasonic sensor to detect and move away from an obstacle",
+        "date": "November 2022 to December 2022"
+        }
+    ]
 }
