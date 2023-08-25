@@ -47,7 +47,7 @@ export default async function Home() {
                 <div className="grid min-h-screen content-start -mt-nav-b pt-nav-b" id="portfolio">
         {/*<RotatingTxt className="z-0 text-5xl border w-min" text="Courses" content={["test1","test2", "test3"]} contentStyle="p-2 sticky top-[100px]" />*/}
                     <SlidingTxt className="text-5xl text-center p-12 pb-8" text="Recent Courses" direction="translate-x-[100vw]" duration="duration-1000"/>
-                    {resume.courses.map((item, index) => (<SlidingTxt className="text-2xl p-8 text-center" text={item} direction="-translate-x-[100vw]" duration="duration-1000"/>))} 
+                    {resume.courses.map((item, index) => (<SlidingTxt key={index} className="text-2xl p-8 text-center" text={item} direction="-translate-x-[100vw]" duration="duration-1000"/>))} 
                 </div>
                 <div id='projects' className="min-h-screen">
                 {/* Placeholder for projects*/}     
