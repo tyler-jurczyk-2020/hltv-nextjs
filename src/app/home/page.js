@@ -16,6 +16,8 @@ export default async function Home() {
     const resumeReq = await fetch("http://localhost:3000/home/api", {cache: 'no-store'});
     const resume = await resumeReq.json(); 
     let counter = 0;
+    let sticky_pos_top = 1;
+    let sticky_pos_bottom = resume.courses.length;
     return (
     <main>
         <menu className="z-50 fixed flex flex-row justify-center items-center bg-neutral-900 border-b-2 border-black w-screen h-nav-b]">
@@ -45,9 +47,9 @@ export default async function Home() {
                     </div>
                     <p className='col-span-3 text-2xl text-center self-center'>"I am a Computer Engineer from the University of Illinois Urbana-Champaign, and I am in the business of building products oriented towards the future. This website that are you are currently looking at was built using the frameworks/language highlighted above. Scroll furthur to see to learn a little more about me."</p>
                 </div>
-                <div className="grid min-h-screen content-start -mt-nav-b pt-nav-b" id="portfolio">
-                    <SlidingTxt className="text-5xl text-center p-12 pb-8" text="Recent Courses" direction="translate-x-[100vw]" duration="duration-1000"/>
-                    {resume.courses.map((item) => (<SlidingTxt key={counter++} className="text-2xl p-8 text-center" text={item} direction="-translate-x-[100vw]" duration="duration-1000"/>))} 
+                <div className="flex flex-col justify-evenly h-[600vh] -mt-nav-b pt-nav-b" id="portfolio">
+                    <p className="sticky p-4 top-[58px] text-5xl text-center border"style={{paddingBottom: `${sticky_pos_bottom--*100}px` }}>Recent Courses</p>
+                    {resume.courses.map((item) => (<p key={counter++} className={'border text-2xl p-8 text-center'} style={{ position: 'sticky', top: `${sticky_pos_top++*100 + 58}px`, paddingBottom: `${sticky_pos_bottom--*100}px` }}>{item}</p>))} 
                 </div>
                 <div id='projects' className="min-h-screen">
                     <SlidingTxt className="text-5xl text-center" text="Projects" direction="translate-x-[100vw]" duration="duration-1000"/>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function SlidingTxt({ text , className, direction, rotation, duration}) {
+export default function SlidingTxt({ style, text , className, direction, rotation, duration}) {
     // Create ref to later be connected to text
     const viewportRef = useRef(null);
     // State of text
@@ -28,7 +28,7 @@ export default function SlidingTxt({ text , className, direction, rotation, dura
     }, [viewportRef])
     const opts = `${direction} ${rotation} ${duration}`
     return (
-        <div className={className} ref={viewportRef}>
+        <div className={className} style={style} ref={viewportRef}>
             <p className={visible ? duration : opts }>{text}</p>    
         </div>
 )} 
